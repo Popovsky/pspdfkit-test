@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import PdfViewerComponent from './components/pspdfkit';
+import "./App.css";
+import RenderInWindow from './components/RenderInWindiw';
+import NewTab from './components/NewTab';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      document: "example.pdf",
+    };
+    this.openAnother = this.openAnother.bind(this);
+  }
+
+  openAnother() {
+    this.setState({
+      document: "another-example.pdf",
+    });
+  }
+
+  render() {
+    return (
+      // <RenderInWindow>
+      <NewTab/>
+        // <PdfViewerComponent
+        //   document={"http://localhost:3000/api/files/ac08a313-95c7-4026-90dd-c6630bec6cd8"}
+        // />
+      // </RenderInWindow>
+    );
+  }
 }
 
 export default App;
